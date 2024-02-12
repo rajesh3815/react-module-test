@@ -7,7 +7,20 @@
     padding: 1.5rem;
     box-sizing: border-box;
     font-family: sans-serif;
-
+    
+}
+.innersidebar{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+.headerChip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .groups {
@@ -27,9 +40,11 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    position: sticky;
-    bottom: 2.5rem;
     float: right;
+}
+.btndiv{
+    position: sticky;
+    bottom: 5.5rem;
 }
 .sideHeader{
     letter-spacing: 2px;

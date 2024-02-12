@@ -15,6 +15,7 @@ const Color = ({ btncolor,setColor }) => {
     setIsHovered(false);
   };
   const handleClick=()=>{
+    // console.log(btncolor);
     setColor(btncolor)
   }
   const hov = isHovered ? { border: `2px solid ${btncolor}` } : {};
