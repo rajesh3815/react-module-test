@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Styles from "./Popup.module.css";
 import Color from "./Color";
-const Popup = ({ isActive, setisActive }) => {
+const Popup = ({ isActive, setisActive,setGroupData }) => {
   const popref = useRef();
   const colorArray = [
     "#43E6FC",
@@ -12,6 +12,7 @@ const Popup = ({ isActive, setisActive }) => {
     "#6691FF",
   ];
   const [borderColor, setborderColor] = useState();
+  const [inputHeader,setInputHeader]=useState("")
   useEffect(() => {
     document.addEventListener("mousedown", (e) => {
       if (!popref.current.contains(e.target)) {
@@ -20,6 +21,12 @@ const Popup = ({ isActive, setisActive }) => {
       }
     });
   }, []);
+
+const clickHandeler=()=>{
+  setGroupData((prev)=>[{name:inputHeader,color:borderColor},...prev])
+  setInputHeader("")
+}
+
   return (
     <>
       <div
@@ -35,7 +42,7 @@ const Popup = ({ isActive, setisActive }) => {
           <h3 className={Styles.headers}>Create New group</h3>
           <div className={Styles.groupName}>
             <h3>Group Name</h3>
-            <input type="text" placeholder="Enter group name" />
+            <input type="text" placeholder="Enter group name" name="input" value={inputHeader} onChange={(e)=>setInputHeader(e.target.value)} />
           </div>
           <div className={Styles.colors}>
             <h3>Choose colour</h3>
@@ -50,7 +57,7 @@ const Popup = ({ isActive, setisActive }) => {
             </div>
           </div>
 
-          <button className={Styles.btn}>Create</button>
+          <button className={Styles.btn} onClick={clickHandeler}>Create</button>
         </div>
       </div>
     </>

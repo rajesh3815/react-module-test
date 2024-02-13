@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-const Color = ({ btncolor,setColor }) => {
+import React, { useState } from "react";
+const Color = ({ btncolor, setColor }) => {
   const [isHovered, setIsHovered] = useState(false);
   const myspan = {
     height: "2rem",
@@ -14,15 +14,15 @@ const Color = ({ btncolor,setColor }) => {
   const handeler2 = () => {
     setIsHovered(false);
   };
-  const handleClick=()=>{
+  const handleClick = () => {
     // console.log(btncolor);
-    setColor(btncolor)
-  }
+    setColor(btncolor);
+  };
   const hov = isHovered ? { border: `2px solid ${btncolor}` } : {};
 
   return (
     <span
-      style={{ ...myspan,...hov}}
+      style={{ ...myspan, ...hov }}
       onMouseEnter={handeler1}
       onMouseLeave={handeler2}
       onClick={handleClick}

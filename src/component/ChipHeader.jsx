@@ -1,7 +1,7 @@
 import React from "react";
 
-const ChipHeader = ({ heading, color }) => {
-  let header = logo("Rajesh Kumar   ");
+const ChipHeader = ({ heading,color }) => {
+  let header = logo(heading);
   function logo(header) {
     let ans = header.charAt(0);
     for (let i = 0; i < header.length; i++) {
@@ -34,7 +34,7 @@ const ChipHeader = ({ heading, color }) => {
           height: "4rem",
           width: "4rem",
           borderRadius: "50%",
-          backgroundColor: "red",
+          backgroundColor: `${color}`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -53,7 +53,7 @@ const ChipHeader = ({ heading, color }) => {
           fontSize: "20px",
         }}
       >
-        my notes
+      {heading}
       </div>
     </div>
   );
