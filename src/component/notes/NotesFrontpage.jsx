@@ -1,10 +1,10 @@
 import React from "react";
-import "./UserNotes.css";
-import image from "../assets/image-removebg-preview 1.png";
-const UserNotes = () => {
+import "./NotesFrontpage.css";
+import image from "../../assets/image-removebg-preview 1.png";
+const NotesFrontpage = () => {
   return (
     <>
-      <div className="main">
+      <div>
         <div className="content">
           <img src={image} alt="images" />
           <h1>Pocket Notes</h1>
@@ -13,9 +13,8 @@ const UserNotes = () => {
             Pocket Notes on up to 4 linked devices and 1 mobile phone
           </p>
         </div>
-        
-      </div>
-      <div className="footer">
+
+        <div className="footer">
           <svg
             width="14"
             height="18"
@@ -30,8 +29,9 @@ const UserNotes = () => {
           </svg>
           <p>end-to-end encrypted</p>
         </div>
+      </div>
     </>
   );
 };
 
-export default UserNotes;
+export default NotesFrontpage;

@@ -1,18 +1,20 @@
 import { useState } from "react";
 import "./App.css";
-import Popup from "./component/Popup";
 import Sidebar from "./component/Sidebar";
-import UserNotes from "./component/UserNotes";
-
+import Notes from "./component/notes/Notes";
+import ContextProvider from "./context/Mycontext";
 function App() {
   return (
     <>
-      <div style={{
-        display:"flex",
-        
-      }}>
-        <Sidebar />
-        <UserNotes />
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <ContextProvider>
+          <Sidebar />
+          <Notes />
+        </ContextProvider>
       </div>
     </>
   );

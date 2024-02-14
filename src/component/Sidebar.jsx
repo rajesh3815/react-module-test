@@ -19,9 +19,7 @@ const Sidebar = () => {
     if (groupData && groupData.length > 0)
       localStorage.setItem("headers", JSON.stringify(groupData));
   }, [groupData]);
-  useEffect(() => {
-    console.log(groupData[0]?.name); // Using optional chaining to avoid errors if groupData[0] is undefined
-  }, [groupData]);
+ 
   
   return (
     <>
@@ -33,7 +31,7 @@ const Sidebar = () => {
           <div className={Style.headerChip}>
               
                 {
-                  groupData.map((el,index)=>(<ChipHeader heading={el?.name} color={el?.color}/>))
+                  groupData.map((el,index)=>(<ChipHeader key={index} heading={el?.name} color={el?.color}/>))
                 }
                
               

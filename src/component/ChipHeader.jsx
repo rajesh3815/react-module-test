@@ -1,7 +1,8 @@
-import React from "react";
-
-const ChipHeader = ({ heading,color }) => {
+import React, { useEffect, useContext } from "react";
+import { Notescontext } from "../context/Mycontext";
+const ChipHeader = ({ heading, color }) => {
   let header = logo(heading);
+  const { setGroupHeader,setTogle } = useContext(Notescontext);
   function logo(header) {
     let ans = header.charAt(0);
     for (let i = 0; i < header.length; i++) {
@@ -13,9 +14,18 @@ const ChipHeader = ({ heading,color }) => {
     }
     return ans;
   }
+  const clickHandeler = () => {
+    console.log("hello");
+    setTogle(true)
+    setGroupHeader(heading)
+  };
+  useEffect(() => {
+    localStorage.setItem(heading, JSON.stringify([]));
+  }, [heading]);
   //   console.log(header);
   return (
     <div
+      onClick={clickHandeler}
       style={{
         border: "1px solid black",
         height: "5rem",
@@ -53,7 +63,7 @@ const ChipHeader = ({ heading,color }) => {
           fontSize: "20px",
         }}
       >
-      {heading}
+        {heading}
       </div>
     </div>
   );
