@@ -19,10 +19,7 @@ const ChipHeader = ({ heading, color }) => {
     setTogle(true)
     setGroupHeader(heading)
   };
-  useEffect(() => {
-    localStorage.setItem(heading, JSON.stringify([]));
-  }, [heading]);
-  //   console.log(header);
+  
   return (
     <div
       onClick={clickHandeler}

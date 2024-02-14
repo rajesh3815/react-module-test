@@ -1,3 +1,10 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9rem;
+}
 
 .content {
     width: 35rem;
@@ -8,7 +15,7 @@
     justify-content: center;
     gap: 0.7rem;
     font-family: 'Roboto', sans-serif;
-    
+
 }
 
 .content>h1 {
@@ -21,11 +28,13 @@
     font-weight: 600;
     letter-spacing: 1px;
 }
-.content img{
+
+.content img {
     height: 20rem;
     width: 35rem;
 }
-.footer{
+
+.footer {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -4,7 +4,7 @@ import image from "../../assets/image-removebg-preview 1.png";
 const NotesFrontpage = () => {
   return (
     <>
-      <div>
+      <div className="main-content">
         <div className="content">
           <img src={image} alt="images" />
           <h1>Pocket Notes</h1>
