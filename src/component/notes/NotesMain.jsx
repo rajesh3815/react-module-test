@@ -7,6 +7,7 @@ const NotesMain = () => {
   const [textinput, setTextinput] = useState("");
   const clickHandeler = () => {
     // setNotesdata([])
+    if(textinput=="") return
     setNotesdata((prev) => [
       {
         messsage: textinput,
@@ -26,18 +27,18 @@ const NotesMain = () => {
 
   useEffect(() => {
     setNotesdata([])
-    let data = JSON.parse(localStorage.getItem(groupHeader));
-    if (data && data.length > 1) {
+    let data = JSON.parse(localStorage.getItem(groupHeader))
+    if (data && data.length >= 1) {
       setNotesdata(data);
       console.log(groupHeader);
     }
   }, [groupHeader]);
 
   useEffect(() => {
-    if (notesdata && notesdata.length > 1)
+    if (notesdata && notesdata.length >= 1)
       localStorage.setItem(groupHeader, JSON.stringify(notesdata));
   }, [notesdata]);
-
+  
   return (
     <div>
       <div className="inputdata">

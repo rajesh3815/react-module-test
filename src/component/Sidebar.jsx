@@ -47,6 +47,7 @@ const Sidebar = () => {
         isActive={isActive}
         setisActive={setisActive}
         setGroupData={setGroupData}
+        groupData={groupData}
       />
     </>
   );

@@ -2,8 +2,8 @@
     position: absolute;
     bottom: 0;
     color: red;
-    border: 1px solid saddlebrown;
-
+    /* border: 1px solid saddlebrown; */
+   /* width: fit-content; */
 }
 
 .txt {
@@ -14,5 +14,6 @@
     -moz-box-shadow: none;
     box-shadow: none;
     resize: none;
+    width: -webkit-fill-available;
 
 }
