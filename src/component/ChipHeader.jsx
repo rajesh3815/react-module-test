@@ -1,10 +1,12 @@
-import React, { useEffect, useContext,useState,useRef } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { Notescontext } from "../context/Mycontext";
+import "./ChipHeader.css";
 const ChipHeader = ({ heading, color }) => {
   let header = logo(heading);
-  const { setGroupHeader,setTogle,setColor,togle } = useContext(Notescontext);
+  const { setGroupHeader, setTogle, setColor, togle } =
+    useContext(Notescontext);
   const [isActive, setisActive] = useState(false);
-  const chipRef=useRef(null)
+  const chipRef = useRef(null);
   function logo(header) {
     let ans = header.charAt(0);
     for (let i = 0; i < header.length; i++) {
@@ -18,35 +20,28 @@ const ChipHeader = ({ heading, color }) => {
   }
   const clickHandeler = () => {
     // console.log("hello");
-    
-    setTogle(true)
-    setGroupHeader(heading)
-    setColor(color)
+
+    setTogle(true);
+    setGroupHeader(heading);
+    setColor(color);
   };
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(chipRef.current);
-    document.addEventListener('click',(e)=>{
-      if(chipRef.current.contains(e.target)){
-        setisActive(true)
-      }else{
-        setisActive(false)
+    document.addEventListener("click", (e) => {
+      if (chipRef.current.contains(e.target)) {
+        setisActive(true);
+      } else {
+        setisActive(false);
       }
-    })
-  },[])
+    });
+  }, []);
   return (
     <div
+      className="headers"
       onClick={clickHandeler}
       style={{
-        backgroundColor:`${isActive?"#2F2F2F2B":""}`,
-        height: "5rem",
-        width: "20vw",
-        display: "flex",
-        alignItems: "center",
-        borderRadius: "8px",
-        gap: "1.5rem",
-        padding: "1rem",
-        boxSizing: "border-box",
-        cursor: "pointer",
+        backgroundColor: `${isActive ? "#2F2F2F2B" : ""}`,
+        
       }}
       ref={chipRef}
     >

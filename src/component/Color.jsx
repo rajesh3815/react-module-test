@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useMediaPredicate } from "react-media-hook";
 const Color = ({ btncolor, setColor }) => {
+  const myMedia=useMediaPredicate("((max-width: 480px)")
   const [isHovered, setIsHovered] = useState(false);
+  // console.log(myMedia);
   const myspan = {
-    height: "2rem",
-    width: "2rem",
+  height: `${myMedia?"1.5rem":"2rem"}`,
+    width: `${myMedia?"1.5rem":"2rem"}`,
     borderRadius: "50%",
     cursor: "pointer",
     backgroundColor: `${btncolor}`,

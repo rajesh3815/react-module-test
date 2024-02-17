@@ -3,3 +3,9 @@
     width: 77vw;
    
 }
+@media  screen and (max-width: 480px)  {
+    .main{
+        display: none;
+    }
+    
+}

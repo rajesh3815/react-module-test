@@ -31,7 +31,7 @@
 
 .groupName {
     display: flex;
-    gap: 1rem;
+    gap: .7rem;
 }
 
 .groupName input[type=text] {
@@ -54,6 +54,7 @@
 .colors {
     display: flex;
     gap: 1rem;
+    font-size: 1.1rem;
 }
 
 .spans {
@@ -64,6 +65,7 @@
 
 .btn {
     width: 5.6rem;
+    height: max-content;
     background-color: #001F8B;
     color: white;
     padding: 0.4rem;
@@ -82,4 +84,15 @@
 
 .btndiv {
     display: inline;
+}
+@media  screen and (max-width: 480px)  {
+    .pops{
+        width: 21rem;
+        height: 15rem;
+    }
+    .btn{
+        width: 70%;
+        right: 13%;
+    }
+    
 }
