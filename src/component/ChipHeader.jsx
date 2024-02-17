@@ -1,8 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext,useState,useRef } from "react";
 import { Notescontext } from "../context/Mycontext";
 const ChipHeader = ({ heading, color }) => {
   let header = logo(heading);
-  const { setGroupHeader,setTogle } = useContext(Notescontext);
+  const { setGroupHeader,setTogle,setColor,togle } = useContext(Notescontext);
+  const [isActive, setisActive] = useState(false);
+  const chipRef=useRef(null)
   function logo(header) {
     let ans = header.charAt(0);
     for (let i = 0; i < header.length; i++) {
@@ -15,16 +17,27 @@ const ChipHeader = ({ heading, color }) => {
     return ans;
   }
   const clickHandeler = () => {
-    console.log("hello");
+    // console.log("hello");
+    
     setTogle(true)
     setGroupHeader(heading)
+    setColor(color)
   };
-  
+  useEffect(()=>{
+    // console.log(chipRef.current);
+    document.addEventListener('click',(e)=>{
+      if(chipRef.current.contains(e.target)){
+        setisActive(true)
+      }else{
+        setisActive(false)
+      }
+    })
+  },[])
   return (
     <div
       onClick={clickHandeler}
       style={{
-        border: "1px solid black",
+        backgroundColor:`${isActive?"#2F2F2F2B":""}`,
         height: "5rem",
         width: "20vw",
         display: "flex",
@@ -35,6 +48,7 @@ const ChipHeader = ({ heading, color }) => {
         boxSizing: "border-box",
         cursor: "pointer",
       }}
+      ref={chipRef}
     >
       <div
         style={{

@@ -1,16 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { Notescontext } from "../../context/Mycontext";
 import "./NotesMain.css";
+import ChipHeader from "../ChipHeader";
+import NotesChip from "./NotesChip";
+import arrowdisabled from "../../assets/arrowoff.svg";
+import arrowenabled from "../../assets/arrowon.svg";
 const NotesMain = () => {
-  const { groupHeader } = useContext(Notescontext);
+  const textref = useRef(null);
+  const { groupHeader, color } = useContext(Notescontext);
   const [notesdata, setNotesdata] = useState([]);
   const [textinput, setTextinput] = useState("");
+  const [isActive, setisActive] = useState(false);
+  //clickhandeler
   const clickHandeler = () => {
-    // setNotesdata([])
-    if(textinput=="") return
+    if (textinput == "") return;
     setNotesdata((prev) => [
       {
-        messsage: textinput,
+        message: textinput,
         time: `${new Date().toLocaleString("en-us", {
           month: "short",
           year: "numeric",
@@ -23,14 +29,26 @@ const NotesMain = () => {
       },
       ...prev,
     ]);
+    setTextinput("");
   };
 
   useEffect(() => {
-    setNotesdata([])
-    let data = JSON.parse(localStorage.getItem(groupHeader))
+    document.addEventListener("click", (e) => {
+      if (textref.current.contains(e.target)) {
+        // console.log(e.target);
+        setisActive(true);
+      } else {
+        setisActive(false);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    setNotesdata([]);
+    let data = JSON.parse(localStorage.getItem(groupHeader));
     if (data && data.length >= 1) {
       setNotesdata(data);
-      console.log(groupHeader);
+      // console.log(groupHeader);
     }
   }, [groupHeader]);
 
@@ -38,28 +56,36 @@ const NotesMain = () => {
     if (notesdata && notesdata.length >= 1)
       localStorage.setItem(groupHeader, JSON.stringify(notesdata));
   }, [notesdata]);
-  
+
   return (
     <div>
-      <div className="inputdata">
-        {notesdata.map((element, index) => (
-          <div key={index}>
-            <p>{element.messsage}</p>
-            <br /> <p>{element.time}</p>
-          </div>
-        ))}
+      <div className="head-bar">
+        <ChipHeader heading={groupHeader} color={color} />
       </div>
-      <div className="inputs">
-        <textarea
-          className="txt"
-          name=""
-          id=""
-          cols="155"
-          rows="10"
-          value={textinput}
-          onChange={(e) => setTextinput(e.target.value)}
-        ></textarea>
-        <button onClick={clickHandeler}>send</button>
+      <div>
+        <div className="inputdata">
+          {notesdata.map((element, index) => (
+            <div key={index}>
+              <NotesChip chipData={element} />
+            </div>
+          ))}
+        </div>
+        <div className="inputs">
+          <textarea
+            placeholder="Enter your text here"
+            className="txt"
+            name=""
+            id=""
+            cols="140"
+            rows="8"
+            value={textinput}
+            onChange={(e) => setTextinput(e.target.value)}
+            ref={textref}
+          ></textarea>
+          <button className="notes-btns" onClick={clickHandeler}>
+            {<img src={isActive ? arrowenabled : arrowdisabled} />}
+          </button>
+        </div>
       </div>
     </div>
   );
