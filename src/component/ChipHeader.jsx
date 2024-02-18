@@ -1,12 +1,17 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
 import { Notescontext } from "../context/Mycontext";
 import "./ChipHeader.css";
+import { useMediaPredicate } from "react-media-hook";
 const ChipHeader = ({ heading, color }) => {
+  const myMedia = useMediaPredicate("((max-width: 480px)");
   let header = logo(heading);
-  const { setGroupHeader, setTogle, setColor, togle } =
+  // context datas
+  const { setGroupHeader, setTogle, setColor, setscreenTogle } =
     useContext(Notescontext);
   const [isActive, setisActive] = useState(false);
+  //use ref
   const chipRef = useRef(null);
+  //function for logo
   function logo(header) {
     let ans = header.charAt(0);
     for (let i = 0; i < header.length; i++) {
@@ -19,8 +24,9 @@ const ChipHeader = ({ heading, color }) => {
     return ans;
   }
   const clickHandeler = () => {
-    // console.log("hello");
-
+    //code for mobile screen
+    myMedia && setscreenTogle(true);
+    //-------------------------//-------------
     setTogle(true);
     setGroupHeader(heading);
     setColor(color);
@@ -41,7 +47,6 @@ const ChipHeader = ({ heading, color }) => {
       onClick={clickHandeler}
       style={{
         backgroundColor: `${isActive ? "#2F2F2F2B" : ""}`,
-        
       }}
       ref={chipRef}
     >

@@ -79,7 +79,8 @@
         width: 100vw;
         padding: 0;
     }
-    .innersidebar{
-        /* width: 100vw; */
+    .btndiv{
+        bottom: 10rem;
+        margin-right: 1.5rem;
     }
 }

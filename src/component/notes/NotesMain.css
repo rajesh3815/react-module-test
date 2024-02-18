@@ -21,7 +21,8 @@
     padding: 10px;
     box-sizing: border-box;
     border-radius: 10px;
-
+    width: -webkit-fill-available;
+    margin: 1.2rem;
 }
 .head-bar{
     width: 77vw;
@@ -42,9 +43,21 @@
 }
 .notes-btns{
     position: absolute;
-    right: 4rem;
-    bottom: 1.14rem;
+    right: 2.5rem;
+    bottom: 1.2rem;
     border: none;
     background: white;
     cursor: pointer;
+}
+@media screen and (max-width: 480px){
+    .head-bar{
+        width: 100vw;
+    }
+    .inputs{
+        width: 100vw;
+    }
+    .inputdata{
+        width: 100vw;
+        
+    }
 }

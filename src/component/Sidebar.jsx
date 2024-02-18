@@ -1,8 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import Style from "./Sidebar.module.css";
 import Popup from "./Popup";
-import ChipHeader from './ChipHeader'
+import ChipHeader from "./ChipHeader";
+import { useMediaPredicate } from "react-media-hook";
+import { Notescontext } from "../context/Mycontext";
 const Sidebar = () => {
+  //context data
+  const {  screenTogle } = useContext(Notescontext);
+  const myMedia = useMediaPredicate("((max-width: 480px)"); //media query
   const [isActive, setisActive] = useState(false);
   const [groupData, setGroupData] = useState([]);
   const handeler = () => {
@@ -19,22 +24,18 @@ const Sidebar = () => {
     if (groupData && groupData.length > 0)
       localStorage.setItem("headers", JSON.stringify(groupData));
   }, [groupData]);
- 
-  
+
   return (
     <>
-      <div className={Style.sidebar}>
+      <div className={Style.sidebar} style={{display: screenTogle ? "none" :"block" }}>
         <div className={Style.innersidebar}>
           <div className={Style.groups}>
             <h2 className={Style.sideHeader}>Pocket Notes</h2>
           </div>
           <div className={Style.headerChip}>
-              
-                {
-                  groupData.map((el,index)=>(<ChipHeader key={index} heading={el?.name} color={el?.color}/>))
-                }
-               
-              
+            {groupData.map((el, index) => (
+              <ChipHeader key={index} heading={el?.name} color={el?.color} />
+            ))}
           </div>
         </div>
         <div className={Style.btndiv}>

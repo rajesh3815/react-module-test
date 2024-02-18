@@ -1,21 +1,11 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import "./App.css";
 import Sidebar from "./component/Sidebar";
 import Notes from "./component/notes/Notes";
 import ContextProvider from "./context/Mycontext";
+import { Notescontext } from "./context/Mycontext";
 function App() {
-  const [width, setWidth] = useState(window.innerWidth);
- 
-  // useEffect(() => {
-  //    window.addEventListener('resize',()=>{
-  //     setWidth(window.innerWidth)
-  //    })
-  
-  //   // return () => {
-  //   //   second
-  //   // }
-  // }, [])
-  //  console.log(width)
+  const {  screenTogle } = useContext(Notescontext);
   return (
     <>
       <div
@@ -24,7 +14,7 @@ function App() {
         }}
       >
         <ContextProvider>
-          <Sidebar />
+          <Sidebar  />
           <Notes />
         </ContextProvider>
       </div>

@@ -1,16 +1,20 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { Notescontext } from "../../context/Mycontext";
 import "./NotesMain.css";
-import ChipHeader from "../ChipHeader";
 import NotesChip from "./NotesChip";
 import arrowdisabled from "../../assets/arrowoff.svg";
 import arrowenabled from "../../assets/arrowon.svg";
+import NoteHeader from "./NoteHeader";
+
 const NotesMain = () => {
   const textref = useRef(null);
+
   const { groupHeader, color } = useContext(Notescontext);
+
   const [notesdata, setNotesdata] = useState([]);
   const [textinput, setTextinput] = useState("");
   const [isActive, setisActive] = useState(false);
+
   //clickhandeler
   const clickHandeler = () => {
     if (textinput == "") return;
@@ -58,9 +62,9 @@ const NotesMain = () => {
   }, [notesdata]);
 
   return (
-    <div>
+    <div className="notes-main">
       <div className="head-bar">
-        <ChipHeader heading={groupHeader} color={color} />
+        <NoteHeader heading={groupHeader} color={color} />
       </div>
       <div>
         <div className="inputdata">
