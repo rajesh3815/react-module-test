@@ -1,6 +1,6 @@
 .headers {
     height: 5rem;
-    width: 20vw;
+    width: max-content;
     display: flex;
     align-items: center;
     border-radius: 8px;

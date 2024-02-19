@@ -18,7 +18,7 @@ const NoteHeader = ({ heading, color }) => {
   }
   return (
     <div className="N-headers">
-     {screenTogle&&<div onClick={()=>setscreenTogle(false)} style={{cursor:"pointer"}}><img src={rwdArrow} alt=""  /></div>}
+     {screenTogle&&<div onClick={()=>setscreenTogle(false)} style={{cursor:"pointer",width:"13px"}}><img src={rwdArrow} alt=""  /></div>}
       <div
         style={{
           height: "4rem",
