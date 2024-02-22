@@ -1,0 +1,7 @@
+.imgs{
+    position: absolute;
+    top: 0px;
+    right: -3px;
+    /* padding: 3px  */
+    cursor: pointer;
+}

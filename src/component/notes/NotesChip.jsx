@@ -1,8 +1,15 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useMediaPredicate } from "react-media-hook";
+import DeleteElement from "../DeleteElement";
 const NotesChip = ({ chipData }) => {
+  // console.log(id);
   const myMedia = useMediaPredicate("((max-width: 480px)");
-  // console.log(chipData);
+  // useEffect(() => {
+  //   const mainDiv = document.getElementById("main_div");
+  //   if (mainDiv) {
+  //     console.log(mainDiv.clientHeight === mainDiv.scrollHeight);
+  //   }
+  // }, [chipData])
   return (
     <div
       style={{
@@ -15,11 +22,35 @@ const NotesChip = ({ chipData }) => {
         padding: "10px",
         overflow: "auto",
         fontSize: "18px",
-        fontFamily: 'sans-serif',
-        letterSpacing:"1.5px"
+        fontFamily: "sans-serif",
+        letterSpacing: "1.5px",
+        position: "relative",
+        wordWrap:"break-word"
       }}
     >
-      <p>{chipData.message}</p>
+      <p style={{display:"inline"}}>{chipData.message}</p>
+      <span
+        style={{
+          position: "absolute",
+          top: "0px",
+          right: "10px",
+          padding: "10px",
+        }}
+      >
+        <DeleteElement id={chipData.id} />
+      </span>
+      <span
+        style={{
+          float: "right",
+          fontSize: "14px",
+          marginBottom: "0",
+          position: "absolute",
+          bottom: "0px",
+          right: "10px",
+        }}
+      >
+        {chipData.time}
+      </span>
     </div>
   );
 };

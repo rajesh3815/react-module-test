@@ -9,9 +9,9 @@ import NoteHeader from "./NoteHeader";
 const NotesMain = () => {
   const textref = useRef(null);
 
-  const { groupHeader, color } = useContext(Notescontext);
+  const { groupHeader, color,notesdata, setNotesdata } = useContext(Notescontext);
 
-  const [notesdata, setNotesdata] = useState([]);
+  // const [notesdata, setNotesdata] = useState([]);
   const [textinput, setTextinput] = useState("");
   const [isActive, setisActive] = useState(false);
 
@@ -19,7 +19,9 @@ const NotesMain = () => {
   const clickHandeler = () => {
     if (textinput == "") return;
     setNotesdata((prev) => [
-      {
+      ...prev,
+      { 
+        id:Date.now(),
         message: textinput,
         time: `${new Date().toLocaleString("en-us", {
           month: "short",
@@ -31,7 +33,7 @@ const NotesMain = () => {
           hour12: true,
         })}`,
       },
-      ...prev,
+      
     ]);
     setTextinput("");
   };
@@ -59,6 +61,8 @@ const NotesMain = () => {
   useEffect(() => {
     if (notesdata && notesdata.length >= 1)
       localStorage.setItem(groupHeader, JSON.stringify(notesdata));
+    else
+    localStorage.setItem(groupHeader,"[]")
   }, [notesdata]);
 
   return (
